@@ -2,8 +2,9 @@
 FROM python:3.9-slim
 
 # Install OpenShift CLI
-RUN curl -L https://mirror.openshift.com/pub/openshift-v4/clients/oc/latest/linux/oc.tar.gz | tar -xz && \
-    mv oc /usr/local/bin/
+RUN apt-get update && apt-get install -y curl && \
+    curl -L https://mirror.openshift.com/pub/openshift-v4/clients/oc/latest/linux/oc.tar.gz | tar -xz && \
+    mv oc /usr/local/bin/ && chmod +x /usr/local/bin/oc
 
 # Set the working directory inside the container
 WORKDIR /app
