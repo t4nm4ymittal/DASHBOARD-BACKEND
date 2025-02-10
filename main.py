@@ -4,6 +4,10 @@ from fastapi.middleware.cors import CORSMiddleware
 import subprocess
 import json
 
+import os
+
+# Set a writable KUBECONFIG path
+os.environ["KUBECONFIG"] = "/tmp/kubeconfig"
 
 app = FastAPI()
 
