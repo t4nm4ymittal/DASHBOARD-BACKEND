@@ -23,7 +23,7 @@ app.add_middleware(
 
 # Ensure OpenShift login
 def login_openshift():
-    oc_token = "sha256~AXO9ckqZu8suRpyRRbh4l3Geo1WRFT67UwyPEJii4PE"  # Use OpenShift token
+    oc_token = "sha256~hNNyjFjRnZQgPt4oDsnNAV6mKH434F20aC9PFsVMhAI"  # Use OpenShift token
     oc_server = "https://api.rm3.7wse.p1.openshiftapps.com:6443"  # OpenShift API server
     if not oc_token or not oc_server:
         raise Exception("OCP_TOKEN and OCP_SERVER environment variables must be set!")
