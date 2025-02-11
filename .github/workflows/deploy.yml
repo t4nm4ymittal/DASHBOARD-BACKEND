@@ -47,7 +47,15 @@ jobs:
 
     - name: Expose OpenShift Service
       run: |
-        oc expose svc/dashboard-backend --port=8000 || echo "Route already exists"
+        if ! oc get svc dashboard-backend; then
+          oc expose deployment dashboard-backend --port=8000 --name=dashboard-backend
+        fi
+
+    - name: Create OpenShift Route
+      run: |
+        if ! oc get route dashboard-backend; then
+          oc expose svc/dashboard-backend
+        fi
 
     - name: Secure Route with HTTPS
       run: |
