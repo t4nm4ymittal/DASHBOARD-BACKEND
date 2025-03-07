@@ -27,7 +27,7 @@ jobs:
 
     - name: Create New OpenShift Build (if needed)
       run: |
-        oc project t4nm4y-dev
+        oc project market-shifters-dev
         if ! oc get bc dashboard-backend; then
           oc new-build --name=dashboard-backend --strategy=docker --binary
         fi
